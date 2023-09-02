@@ -1,0 +1,96 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext", "es2015"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "components/*": ["./src/components/*"],
+      "api/*": ["./src/api/*"],
+      "consts/*": ["./src/consts/*"],
+      "customHooks/*": ["./src/customHooks/*"],
+      "helpers/*": ["./src/helpers/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+// {
+//   "compilerOptions": {
+//     "target": "es5",
+//     "lib": [
+//       "dom",
+//       "dom.iterable",
+//       "esnext",
+//       "es2015"
+//     ],
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "strict": true,
+//     "outDir": "./lib/cjs/",
+//     "forceConsistentCasingInFileNames": true,
+//     "noEmit": true,
+//     "esModuleInterop": true,
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "jsx": "preserve",
+//     "sourceMap": true,
+//     "declaration": true,
+//     "noImplicitAny": true, //prevents using the any type by throwing an error (this is best practice)
+//     "incremental": true,
+//     "baseUrl": ".",
+//     "paths": {
+//       "@/*": [
+//         "./src/*"
+//       ],
+//       "components/*": [
+//         "./src/components/*"
+//       ],
+//       "api/*": [
+//         "./src/api/*"
+//       ],
+//       "consts/*": [
+//         "./src/consts/*"
+//       ],
+//       "customHooks/*": [
+//         "./src/customHooks/*"
+//       ],
+//       "helpers/*": [
+//         "./src/helpers/*"
+//       ]
+//     },
+//     "plugins": [
+//       {
+//         "name": "next"
+//       }
+//     ]
+//   },
+//   "include": [
+//     "next-env.d.ts",
+//     "**/*.ts",
+//     "**/*.tsx",
+//     ".next/types/**/*.ts"
+//   ],
+//   "exclude": [
+//     "node_modules",
+//     "dist",
+//     "lib"
+//   ]
+// }
