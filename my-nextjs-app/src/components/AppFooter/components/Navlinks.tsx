@@ -1,31 +1,45 @@
-import {Row, Stack, Icon} from '@/components/primitives';
-import NavLink from '@/components/AppFooter/components/NavLink';
+import { Row, Stack, Icon } from "@/components/primitives";
+import NavLink from "@/components/AppFooter/components/NavLink";
 
-import {mdiPhone, mdiEmail, mdiMapMarker} from '@mdi/js';
+import {
+  mdiPhone,
+  mdiEmail,
+  mdiLinkedin,
+  mdiCastEducation,
+  mdiGithub,
+} from "@mdi/js";
 
 const navLinks = [
   {
-    title: 'Contact Us',
+    title: "Linkedin",
     links: [
-      {icon: mdiPhone, text: '+928759375', to: '/contact-us'},
-      {icon: mdiEmail, text: 'info@gmail.com', to: '/contact-us'},
-      {icon: mdiMapMarker, text: 'Address short', to: '/contact-us'},
+      { icon: mdiPhone, text: "+37499940606", to: "/" },
+      {
+        icon: mdiEmail,
+        text: "info@gmail.com",
+        to: "https://www.google.com/intl/ru/gmail/about/",
+      },
+      {
+        icon: mdiLinkedin,
+        text: "Hakob tagayan",
+        to: "https://www.linkedin.com/in/hakob-tagayan/",
+      },
     ],
   },
   {
-    title: 'Company',
+    title: "My Projects KnowWay",
     links: [
-      {icon: '', text: 'About Us', to: '/contact-us'},
-      {icon: '', text: 'Our Partners', to: '/contact-us'},
-      {icon: '', text: 'Contact Us', to: '/contact-us'},
+      { icon: mdiCastEducation, text: "KnowwWay", to: "https://knowway.am/" },
     ],
   },
   {
-    title: 'Lorem Ipsum',
+    title: "GitHub",
     links: [
-      {icon: '', text: 'Terms & Conditions', to: '/contact-us'},
-      {icon: '', text: 'FAQs', to: '/contact-us'},
-      {icon: '', text: 'News', to: '/contact-us'},
+      {
+        icon: mdiGithub,
+        text: "Tagayan061994",
+        to: "https://github.com/Tagayan061994",
+      },
     ],
   },
 ];

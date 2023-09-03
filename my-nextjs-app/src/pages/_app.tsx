@@ -64,7 +64,7 @@ const AppPage = ({ Component, ...rest }: AppProps) => {
           <Component {...props} />
         </Main>
 
-        {/* {isMainRoute && <AppFooter />} */}
+        {isMainRoute && <AppFooter />}
       </App>
     </Provider>
   );

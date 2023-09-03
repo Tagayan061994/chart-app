@@ -1,7 +1,11 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-import Container from '@/components/Container';
-import {Stack} from '@/components/primitives';
+import Container from "@/components/Container";
+import { Stack, Row, Col } from "@/components/primitives";
+
+import BarChart from "@/components/charts/BarChart";
+import PieCharts from "@/components/charts/PieChart";
+import LineChart from "@/components/charts/LineChart";
 
 export default function Charts() {
   return (
@@ -13,17 +17,19 @@ export default function Charts() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Stack className="gap-y-32">
-        <Container>
-          <Stack className="gap-y-32">
-
-            <Stack className="gap-y-24">
-           
-            </Stack>
-
-          </Stack>
-        </Container>
-      </Stack>
+      <Container className="mt-10 mb-10">
+        <Row className="gap-x-8">
+          <Col>
+            <BarChart />
+          </Col>
+          <Col>
+            <PieCharts />
+          </Col>
+          <Col>
+            <LineChart />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

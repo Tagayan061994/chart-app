@@ -15,14 +15,9 @@ export default function Todos() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Stack className="gap-y-32">
-        <Container>
-        <h1 className="text-secondary text-2xl text-center font-bold mx-auto">
-          Todos Chart
-        </h1>
-          <TodoFlowCanvas />
-        </Container>
-      </Stack>
+      <Container className="mb-10 h-screen">
+        <TodoFlowCanvas />
+      </Container>
     </>
   );
 }

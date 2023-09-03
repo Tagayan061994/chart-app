@@ -1,8 +1,8 @@
-import type {ThunkAction, Action} from '@reduxjs/toolkit';
+import type { ThunkAction, Action } from "@reduxjs/toolkit";
 
-import {configureStore} from '@reduxjs/toolkit';
-import reducer from '@/store/reducer';
-import {createWrapper} from 'next-redux-wrapper';
+import { configureStore } from "@reduxjs/toolkit";
+import reducer from "@/store/reducer";
+import { createWrapper } from "next-redux-wrapper";
 
 const makeStore = () =>
   configureStore({
@@ -11,7 +11,7 @@ const makeStore = () =>
   });
 
 export type AppStore = ReturnType<typeof makeStore>;
-export type AppState = ReturnType<AppStore['getState']>;
+export type AppState = ReturnType<AppStore["getState"]>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   AppState,
