@@ -67,6 +67,11 @@ export const getUser = createSelector(
   (state) => state.user
 );
 
+export const getUserEmail = createSelector(
+  (state: AppState) => state.userState,
+  (state) => state.user.email
+);
+
 export const getUserFormValid = createSelector(
   (state: AppState) => state.userState,
   ({ valid }) => {

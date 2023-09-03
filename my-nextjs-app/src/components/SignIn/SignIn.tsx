@@ -1,10 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import SignInForm from "@/components/SignIn/components/SignInForm";
-import { Stack, Row, Button } from "@/components/primitives";
-
-import GoogleIconPic from "@/../public/auth/logos_google_icon.png";
+import { Stack, Row } from "@/components/primitives";
 
 export const SignIn = () => {
   return (
@@ -22,23 +19,6 @@ export const SignIn = () => {
       <SignInForm />
 
       <Stack spacing="lg">
-        <Button
-          color="white"
-          xLarge
-          block
-          rounded
-          className="shadow-[0_0_10px_#0000001a]"
-        >
-          <Image
-            src={GoogleIconPic}
-            alt="google_logo"
-            width={24}
-            height={24}
-            className="mr-6"
-          />
-          continue with google
-        </Button>
-
         <Row
           justify="center"
           className="text-light-blue text-sm text-center gap-x-2"

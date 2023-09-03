@@ -2,7 +2,7 @@ import type { FormEvent, ChangeEvent } from "react";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "@/store/slices/user";
+
 import {
   getLoading,
   setLoading,
@@ -11,13 +11,13 @@ import {
 } from "@/store/slices/signIn";
 import { Stack, TextField, Button, Alert } from "@/components/primitives";
 
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase.config";
 
 import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const loading = useSelector(getLoading);
@@ -39,20 +39,12 @@ const LoginForm = () => {
     signIn();
   };
 
-  const handleSignIn = async () => {
+  const handleSignUp = async () => {
     try {
-      const { user } = await signInWithEmailAndPassword(auth, email, password);
-      console.log("ser in", user);
+      await createUserWithEmailAndPassword(auth, email, password);
 
-      if (user && user.email) {
-        dispatch(
-          setUser({
-            email: user.email,
-          })
-        );
-      }
       alert("User signed in successfully!");
-      router.push("./");
+      router.push("./sign-in");
     } catch (error) {
       alert(error);
     }
@@ -61,7 +53,7 @@ const LoginForm = () => {
   const signIn = async () => {
     try {
       dispatch(setLoading(true));
-      handleSignIn();
+      handleSignUp();
       dispatch(setLoading(false));
     } catch (err) {
       if (err instanceof AxiosError && err.response) {
@@ -112,4 +104,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;

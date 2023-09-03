@@ -7,19 +7,15 @@ import ReactFlow, {
   Connection,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import clsx from "clsx";
+
 import { useDispatch, useSelector } from "react-redux";
-import type { NodeTypes } from "reactflow";
-import type { FC, ChangeEvent } from "react";
+import { getTodos, addTodo } from "@/store/slices/todoSlice";
+
 import { Stack, Button, TextField } from "@/components/primitives";
 import Container from "@/components/Container";
 import createCustomNode from "./createNodeHOC";
-import {
-  getTodos,
-  addTodo,
-  updateTodo,
-  deleteTodo,
-} from "@/store/slices/todoSlice";
+
+import type { FC, ChangeEvent } from "react";
 
 type NewTodo = {
   title: string;
@@ -67,17 +63,6 @@ const TodoFlowCanvas: FC = () => {
     setNewTodo({ title: "", description: "", resolved: false });
     dispatch(addTodo(newElement));
   };
-
-  const onElementsRemove = useCallback(
-    (elementsToRemove: any) => {
-      setNodes((prevNodes) =>
-        prevNodes.filter(
-          (nd) => !elementsToRemove.find((el: any) => el.id === nd.id)
-        )
-      );
-    },
-    [setNodes]
-  );
 
   const handleChange = useCallback(
     ({ target: { value, name } }: ChangeEvent<HTMLInputElement>) => {

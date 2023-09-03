@@ -1,8 +1,4 @@
 {
-  "mainRoutes": [
-    "/",
-    "/todos",
-    "/charts"
-  ],
+  "mainRoutes": ["/", "/todos", "/charts"],
   "authRoutes": ["/sign-in"]
 }

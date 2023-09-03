@@ -2,9 +2,9 @@ import clsx from "clsx";
 import Head from "next/head";
 import Image from "next/image";
 import { Row, Stack } from "@/components/primitives";
-import SignIn from "@/components/SignIn";
+import SignUpForm from "@/components/SignUp";
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <>
       <Head>
@@ -38,7 +38,7 @@ export default function SignInPage() {
           )}
         >
           <Stack spacing="lg" className="grow">
-            <SignIn />
+            <SignUpForm />
           </Stack>
         </Row>
       </Row>

@@ -1,34 +1,25 @@
-import { useState, useEffect } from "react";
-import firebase from "firebase/app";
-import "firebase/auth";
+import { useEffect, useState } from "react";
+
 import { auth } from "../firebase.config";
 import { onAuthStateChanged } from "firebase/auth";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/store/slices/user";
 
 const useAuth = () => {
-  const dispatch = useDispatch();
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user && user.email) {
+      if (user) {
         if (user) {
-          const token = await user.getIdToken();
-          localStorage.setItem("userToken", token);
-        } else {
-          localStorage.removeItem("userToken");
+          setUser(user);
         }
-        dispatch(
-          setUser({
-            email: user.email,
-          })
-        );
       }
     });
 
     // Cleanup subscription on unmount
     return () => unsubscribe();
-  }, [dispatch]);
+  }, []);
+
+  return user;
 };
 
 export default useAuth;

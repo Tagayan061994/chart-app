@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import Container from "@/components/Container";
-import { Stack, Row, Col } from "@/components/primitives";
+import { Row, Col } from "@/components/primitives";
 
 import BarChart from "@/components/charts/BarChart";
 import PieCharts from "@/components/charts/PieChart";
