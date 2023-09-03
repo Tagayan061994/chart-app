@@ -2,7 +2,8 @@ import Head from "next/head";
 
 import Container from "@/components/Container";
 import { Stack } from "@/components/primitives";
-import TodoFlowCanvas from "@/components/TodoFlowCanvas";
+// import TodoFlowCanvas from "@/components/TodoFlowCanvas";
+import TodoFlowCanvas from "@/components/Todos";
 
 export default function Todos() {
   return (

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import ReactFlow, {
   useNodesState,
   useEdgesState,
@@ -12,6 +12,8 @@ import type { NodeTypes } from "reactflow";
 import type { FC, ChangeEvent } from "react";
 import { Stack, Button, TextField } from "@/components/primitives";
 import Container from "@/components/Container";
+import createCustomNode from "./createNodeHOC";
+// import CustomNode from "./CustomNode";
 
 type Todo = {
   title: string;
@@ -19,30 +21,13 @@ type Todo = {
   resolved: boolean;
 };
 
-const connectionLineStyle = { stroke: '#fff' };
+const connectionLineStyle = { stroke: "#fff" };
 const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
-
-const CustomNode = ({data}: any) => {
-  console.log("data", data);
-  return (
-    <Stack className="gap-8">
-      <div>{data.label}</div>
-      <div>
-        <div className="child-div">Child 1</div>
-        <div className="child-div">Child 2</div>
-      </div>
-    </Stack>
-  );
-};
-
-const nodeTypes: NodeTypes = {
-  special: CustomNode,
-};
 
 const initialNodes = [
   {
     id: "1",
-    type: 'special',
+    type: "special",
     position: { x: 0, y: 0 },
     data: { label: "Add your first task" },
     style: { background: "#D6D5E6", color: "#333", padding: "10px" },
@@ -58,8 +43,21 @@ const TodoFlowCanvas: FC = () => {
     resolved: false,
   });
 
+  //   const onConnect = useCallback(
+  //     (params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)),
+  //     [setEdges]
+  //   );
+
   const onConnect = useCallback(
-    (params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)),
+    (params: Edge | Connection) => {
+      const newEdge = {
+        ...params,
+        animated: true,
+        style: { stroke: "#000" },
+        isConnectedAsTarget: true,
+      };
+      setEdges((eds) => addEdge(newEdge, eds));
+    },
     [setEdges]
   );
 
@@ -67,14 +65,16 @@ const TodoFlowCanvas: FC = () => {
     const id = `${new Date().getTime()}`;
     const newElement = {
       id,
+      type: "special",
       position: {
         x: (Math.random() * window.innerWidth) / 2,
         y: (Math.random() * window.innerHeight) / 2,
       },
       data: {
-        label: `${newTodo.title}\n${newTodo.description}\n${
+        label: `${newTodo.title}\n${
           newTodo.resolved ? "Resolved" : "Unresolved"
         }`,
+        description: newTodo.description,
       },
     };
     setNodes((nds) => nds.concat(newElement));
@@ -92,11 +92,30 @@ const TodoFlowCanvas: FC = () => {
     [setNodes]
   );
 
-  const handleChange = ({
-    target: { value, name },
-  }: ChangeEvent<HTMLInputElement>) => {
-    setNewTodo({ ...newTodo, [name]: value });
-  };
+  //   const handleChange = ({
+  //     target: { value, name },
+  //   }: ChangeEvent<HTMLInputElement>) => {
+  //     setNewTodo({ ...newTodo, [name]: value });
+  //   };
+
+  const handleChange = useCallback(
+    ({ target: { value, name } }: ChangeEvent<HTMLInputElement>) => {
+      setNewTodo((prevTodo) => ({ ...prevTodo, [name]: value }));
+    },
+    []
+  );
+
+  const CustomNode = useMemo(
+    () => createCustomNode({ onConnect, handleChange }),
+    [onConnect, handleChange]
+  );
+
+  const nodeTypes = useMemo(
+    () => ({
+      special: CustomNode,
+    }),
+    [CustomNode]
+  );
 
   return (
     <Container className="w-screen h-screen bg-primary overflow-hidden">
@@ -129,10 +148,10 @@ const TodoFlowCanvas: FC = () => {
           onConnect={onConnect}
           // onElementClick={onElementsRemove}
           snapToGrid
-          snapGrid={[20,20]}
+          snapGrid={[10, 10]}
           connectionLineStyle={connectionLineStyle}
           defaultViewport={defaultViewport}
-        //   fitView
+          fitView
           attributionPosition="bottom-left"
         />
       </div>
