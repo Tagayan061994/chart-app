@@ -12,7 +12,7 @@ export const SignIn = () => {
         </h1>
 
         <span className="text-light-blue text-center">
-          Sign in with your CargoNect email and password
+          Sign in with your email and password
         </span>
       </Stack>
 

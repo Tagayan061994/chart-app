@@ -1,1 +1,1 @@
-export interface ICargoGlobal {}
+export interface IChartGlobal {}
