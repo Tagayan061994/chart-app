@@ -7,7 +7,6 @@ import App from "@/components/App";
 import Main from "@/components/Main";
 import AppHeader from "@/components/AppHeader";
 import AppFooter from "@/components/AppFooter";
-
 import { Open_Sans } from "@next/font/google";
 import localFont from "@next/font/local";
 const openSans = Open_Sans({

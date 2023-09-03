@@ -1,18 +1,18 @@
-import type {FormEvent, ChangeEvent, FocusEvent} from 'react';
-import type {SignInValues} from '@/store/slices/signIn';
+import type { FormEvent, ChangeEvent, FocusEvent } from "react";
+import type { SignInValues } from "@/store/slices/signIn";
 
-import api from '@/api';
+import api from "@/api";
 // import {useInitialization} from '@/hooks';
-import {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {setUser, setSignedIn, setAuthenticated} from '@/store/slices/auth';
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser, setSignedIn, setAuthenticated } from "@/store/slices/auth";
 import {
   getLoading,
   setLoading,
   getSignInValues,
   setSignInValues,
   getSignInFormValid,
-} from '@/store/slices/signIn';
+} from "@/store/slices/signIn";
 import {
   Stack,
   TextField,
@@ -20,39 +20,39 @@ import {
   Row,
   CheckBox,
   Alert,
-} from '@/components/primitives';
-import Link from 'next/link';
+} from "@/components/primitives";
+import Link from "next/link";
 
-import {AxiosError} from 'axios';
+import { AxiosError } from "axios";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   // const {sendRequest} = useInitialization();
   const loading = useSelector(getLoading);
   const signInValues = useSelector(getSignInValues);
-  const {email, password} = signInValues;
+  const { email, password } = signInValues;
 
   const formValid = useSelector(getSignInFormValid);
   const [checked, setChecked] = useState(false);
   const [showError, setShowError] = useState(false);
 
-  const handleBlur = ({target: {name}}: FocusEvent<HTMLInputElement>) => {
+  const handleBlur = ({ target: { name } }: FocusEvent<HTMLInputElement>) => {
     // if (name === 'email') getEmailMessage();
     // else if (name === 'password') getPasswordMessage();
   };
 
-  const handleFocus = ({target: {name}}: FocusEvent<HTMLInputElement>) => {
+  const handleFocus = ({ target: { name } }: FocusEvent<HTMLInputElement>) => {
     // resetError(name as keyof SignInValues);
   };
 
-  const handleChange = ({target}: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setShowError(false);
-    const {name, value} = target;
+    const { name, value } = target;
 
     // if (name === 'email') validateEmail(value);
     // else if (name === 'password') validatePassword(value);
 
-    dispatch(setSignInValues({...signInValues, [name]: value}));
+    dispatch(setSignInValues({ ...signInValues, [name]: value }));
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -70,10 +70,10 @@ const LoginForm = () => {
     try {
       dispatch(setLoading(true));
 
-      const {data} = await api.post('/auth/login', signInValues);
-      const {status, role} = data;
+      const { data } = await api.post("/auth/login", signInValues);
+      const { status, role } = data;
 
-      if (status === 'stex nayel') {
+      if (status === "stex nayel") {
         dispatch(setAuthenticated(true));
         // await sendRequest();
       } else if (status) {
@@ -84,7 +84,7 @@ const LoginForm = () => {
       dispatch(setLoading(false));
     } catch (err) {
       if (err instanceof AxiosError && err.response) {
-        const {status} = err.response;
+        const { status } = err.response;
         if (status === 404 || status === 422) {
           setShowError(true);
         }

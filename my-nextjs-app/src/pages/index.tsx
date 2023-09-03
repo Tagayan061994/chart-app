@@ -1,7 +1,11 @@
-import Head from 'next/head';
-import JoinUs from '@/components/Home/JoinUs';
+import Head from "next/head";
+import JoinUs from "@/components/Home/JoinUs";
+import useAuth from "@/hook/useAuth";
 
 export default function Home() {
+  const user = useAuth();
+  console.log("user", user);
+
   return (
     <>
       <Head>
@@ -11,8 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      
-     <div>home</div>
+      <div>home</div>
     </>
   );
 }

@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
-import SignInForm from '@/components/SignIn/components/SignInForm';
-import {Stack, Row, Button} from '@/components/primitives';
+import SignInForm from "@/components/SignIn/components/SignInForm";
+import { Stack, Row, Button } from "@/components/primitives";
 
-import GoogleIconPic from '@/../public/auth/logos_google_icon.png';
+import GoogleIconPic from "@/../public/auth/logos_google_icon.png";
 
 export const SignIn = () => {
   return (

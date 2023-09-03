@@ -1,11 +1,11 @@
-import clsx from 'clsx';
-import Head from 'next/head';
-import Image from 'next/image';
-import {Row, Stack} from '@/components/primitives';
-import SignIn from '@/components/SignIn';
-import NavLinks from '@/components/SignUp/NavLinks';
+import clsx from "clsx";
+import Head from "next/head";
+import Image from "next/image";
+import { Row, Stack } from "@/components/primitives";
+import SignIn from "@/components/SignIn";
+import NavLinks from "@/components/SignUp/NavLinks";
 
-import CargoAirPlanePic from '@/../public/auth/cargoAirPlane.jpg';
+import CargoAirPlanePic from "@/../public/auth/cargoAirPlane.jpg";
 
 export default function SignInPage() {
   return (
@@ -23,16 +23,16 @@ export default function SignInPage() {
           src={CargoAirPlanePic}
           unoptimized
           style={{
-            width: '50vw',
-            height: '100vh',
-            objectFit: 'cover',
+            width: "50vw",
+            height: "100vh",
+            objectFit: "cover",
           }}
         />
 
         <Row
           align="center"
           className={clsx(
-            'grow h-[100vh] overflow-auto py-10',
+            "grow h-[100vh] overflow-auto py-10",
             'bg-[url("/auth/auth_bg.jpg")] bg-cover bg-no-repeat bg-right'
           )}
         >
