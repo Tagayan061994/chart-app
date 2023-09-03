@@ -7,7 +7,6 @@ const BarChart = () => {
   const chartRef = useRef(null);
   const todos = useSelector(getTodos);
   const resolvedCount = useSelector(getResolvedTodosCount);
-  console.log("todos", todos);
 
   const unresolvedCount = todos.length - resolvedCount;
 

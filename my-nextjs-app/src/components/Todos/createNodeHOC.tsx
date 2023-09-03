@@ -61,7 +61,6 @@ const createCustomNode: ICreateCustomNode = (onConnect, setNodes) => {
           className={`text-light-blue px-1 py-1 rounded ${
             resolved ? "bg-light-green" : "bg-primary"
           }`}
-          onClick={() => console.log()}
         >
           {resolved ? "Resolved" : "Not Resolved"}
         </span>

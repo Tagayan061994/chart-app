@@ -27,7 +27,6 @@ export const AppHeader = () => {
       console.error("Logout failed:", error);
     }
   };
-  console.log("userEmail", userEmail);
 
   return (
     <header className="py-8">
