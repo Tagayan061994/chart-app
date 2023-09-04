@@ -4,12 +4,12 @@ import { Handle, Position } from "reactflow";
 import { useDispatch } from "react-redux";
 import { updateResolved } from "@/store/slices/todoSlice";
 
-import { CheckBox } from "@/components/primitives/CheckBox";
+import { CheckBox, Row } from "@/components/primitives";
 
 interface ICustomNodeProps {
   id: string;
   data: {
-    label: string;
+    title: string;
     description: string;
     resolved: boolean;
   };
@@ -21,7 +21,7 @@ interface ICreateCustomNode {
 
 const createCustomNode: ICreateCustomNode = (onConnect, setNodes) => {
   const CustomNode: React.FC<ICustomNodeProps> = ({ data, id }) => {
-    const { label, description, resolved } = data;
+    const { title, description, resolved } = data;
     const dispatch = useDispatch();
 
     const handleResolve = useCallback(
@@ -54,16 +54,18 @@ const createCustomNode: ICreateCustomNode = (onConnect, setNodes) => {
           onConnect={onConnect}
           isConnectable
         />
-        <h3 className="text-lg font-semibold mb-2">{label}</h3>
-        <p className="text-sm text-light-blue mb-4">{description}</p>
-        <CheckBox checked={resolved} onClick={handleResolve} />
-        <span
-          className={`text-light-blue px-1 py-1 rounded ${
-            resolved ? "bg-light-green" : "bg-primary"
-          }`}
-        >
-          {resolved ? "Resolved" : "Not Resolved"}
-        </span>
+        <h3 className="text-white text-lg font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-white mb-4">{description}</p>
+        <Row justify="between" className="mb-4">
+          <CheckBox checked={resolved} onClick={handleResolve} />
+          <p
+            className={`text-light-blue px-1 py-1 rounded ${
+              resolved ? "bg-light-green" : "bg-primary"
+            }`}
+          >
+            {resolved ? "Resolved" : "Not Resolved"}
+          </p>
+        </Row>
         <Handle
           type="source"
           position={Position.Bottom}

@@ -64,6 +64,15 @@ export default function Home() {
             </h4>
             <ul>
               <li>
+                <h4 className="text-2xl font-bold font-roobert text-error">
+                  Bug Report
+                </h4>
+                <p>Right now we have an issue with a signUp form</p>
+                <p>you can login to test charts with</p>
+                <p className="font-bold font-roobert">Login - aaa@gmail.com</p>
+                <p className="font-bold font-roobert">Pass - Qaz123</p>
+              </li>
+              <li>
                 <h4 className="font-bold font-roobert">Clone the Repository</h4>
                 <p> git clone https://github.com/Tagayan061994/chart-app</p>
               </li>
