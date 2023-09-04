@@ -27,6 +27,7 @@ export default function SignInPage() {
             width: "30vw",
             height: "100vh",
             objectFit: "contain",
+            marginLeft: "5%",
           }}
         />
 

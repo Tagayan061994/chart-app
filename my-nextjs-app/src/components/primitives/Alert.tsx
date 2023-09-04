@@ -1,9 +1,9 @@
-import clsx from 'clsx';
-import {Row, Stack, Button, Icon} from '@/components/primitives';
+import clsx from "clsx";
+import { Row, Stack, Button, Icon } from "@/components/primitives";
 
-import {mdiCheckCircle, mdiAlert, mdiCloseCircle} from '@mdi/js';
+import { mdiCheckCircle, mdiAlert, mdiCloseCircle } from "@mdi/js";
 
-type AlertVariant = 'success' | 'error';
+type AlertVariant = "success" | "error";
 
 interface AlertProps extends React.PropsWithChildren {
   className?: string;
@@ -17,7 +17,7 @@ interface AlertProps extends React.PropsWithChildren {
 export const Alert: React.FC<AlertProps> = ({
   children,
   className,
-  variant = 'error',
+  variant = "error",
   title,
   text,
   maxWidth,
@@ -27,18 +27,18 @@ export const Alert: React.FC<AlertProps> = ({
     <div
       className={clsx(
         className,
-        'border  rounded-lg p-4',
-        variant === 'error'
-          ? 'border-error text-error'
-          : 'border-primary text-primary'
+        "border  rounded-lg p-4",
+        variant === "error"
+          ? "border-error text-error"
+          : "border-primary text-primary"
       )}
-      style={{maxWidth: maxWidth && `${maxWidth}px`}}
+      style={{ maxWidth: maxWidth && `${maxWidth}px` }}
     >
       <Row align="center" justify="between">
         <Row align="start" nowrap className="gap-x-4">
           <Icon
-            name={variant === 'error' ? mdiAlert : mdiCheckCircle}
-            color={variant === 'error' ? 'error' : 'primary'}
+            name={variant === "error" ? mdiAlert : mdiCheckCircle}
+            color={variant === "error" ? "error" : "primary"}
           />
           <Stack spacing="xs">
             {title && (

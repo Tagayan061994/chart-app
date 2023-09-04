@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { useSelector } from "react-redux";
-import { getUserEmail } from "@/store/slices/user";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserEmail, setUser } from "@/store/slices/user";
 import { Row, Col, Button } from "@/components/primitives";
 
 import Container from "@/components/Container";
@@ -12,15 +12,25 @@ import { useRouter } from "next/router";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 
+import useCheckToken from "@/hook/useCheckToken";
+
 export const AppHeader = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
+  const token = useCheckToken();
   const userEmail = useSelector(getUserEmail);
 
   const handleLogout = async () => {
     try {
       if (auth) {
         await signOut(auth);
+
         localStorage.removeItem("userToken");
+        dispatch(
+          setUser({
+            email: "",
+          })
+        );
         router.push("/sign-in");
       }
     } catch (error) {
@@ -46,7 +56,7 @@ export const AppHeader = () => {
 
           <Col cols="8">
             <Row justify="between" align="center">
-              {userEmail ? (
+              {token ? (
                 <>
                   <Col cols="auto">
                     <NavLinks />

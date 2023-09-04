@@ -1,4 +1,5 @@
 import Head from "next/head";
+import withAuth from "@/HOC/withAuth";
 
 import Container from "@/components/Container";
 import { Row, Col } from "@/components/primitives";
@@ -7,7 +8,7 @@ import BarChart from "@/components/charts/BarChart";
 import PieCharts from "@/components/charts/PieChart";
 import LineChart from "@/components/charts/LineChart";
 
-export default function Charts() {
+const Charts = () => {
   return (
     <>
       <Head>
@@ -32,4 +33,6 @@ export default function Charts() {
       </Container>
     </>
   );
-}
+};
+
+export default withAuth(Charts);

@@ -1,21 +1,13 @@
 import type { AppState } from "@/store";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { StaticImageData } from "next/image";
 
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { apiCallBegan } from "@/store/api";
 
 export type RoleValue = "CLIENT" | "AGENT";
 
-export interface Role {
-  title: "Shipper" | "Fowarder";
-  value: RoleValue;
-  imageUrl: StaticImageData;
-  selectedImgUrl: StaticImageData;
-}
-
 export interface User {
   email: string;
+  accessToken?: string;
 }
 
 export interface UserState {
@@ -30,9 +22,11 @@ const initialState: UserState = {
   loading: false,
   user: {
     email: "",
+    accessToken: "",
   },
   valid: {
     email: false,
+    accessToken: false,
   },
 };
 

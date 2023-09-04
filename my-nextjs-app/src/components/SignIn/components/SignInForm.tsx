@@ -42,7 +42,6 @@ const LoginForm = () => {
   const handleSignIn = async () => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
-      console.log("ser in", user);
 
       if (user && user.email) {
         dispatch(
@@ -50,6 +49,8 @@ const LoginForm = () => {
             email: user.email,
           })
         );
+
+        localStorage.setItem("userToken", user.accessToken);
       }
       alert("User signed in successfully!");
       router.push("./");

@@ -13,7 +13,6 @@ export {
 } from "@/components/primitives/List";
 export { Button } from "@/components/primitives/Button";
 
-export { Tabs, Tab } from "@/components/primitives/Tabs";
 export { RadioBtn } from "@/components/primitives/RadioBtnField";
 export { ProgressCircular } from "@/components/primitives/ProgressCircular";
 export { Alert } from "@/components/primitives/Alert";

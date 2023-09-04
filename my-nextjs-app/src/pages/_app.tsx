@@ -46,18 +46,12 @@ const roobert = localFont({
 import "@/styles/globals.css";
 
 import routeGroups from "@/assets/config/routeGroups.json";
-import useAuth from "@/hook/useAuth";
 
 const AppPage = ({ Component, ...rest }: AppProps) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const { route } = useRouter();
+
   const { mainRoutes } = routeGroups;
-
-  const user = useAuth();
-
-  if (user) {
-    localStorage.setItem("userToken", user.accessToken);
-  }
 
   const isMainRoute = !!~mainRoutes.indexOf(route);
 

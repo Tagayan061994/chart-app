@@ -1,9 +1,10 @@
 import Head from "next/head";
+import withAuth from "@/HOC/withAuth";
 
 import Container from "@/components/Container";
 import TodoFlowCanvas from "@/components/Todos";
 
-export default function Todos() {
+const Todos = () => {
   return (
     <>
       <Head>
@@ -18,4 +19,5 @@ export default function Todos() {
       </Container>
     </>
   );
-}
+};
+export default withAuth(Todos);
