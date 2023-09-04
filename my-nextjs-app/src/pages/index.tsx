@@ -65,10 +65,17 @@ export default function Home() {
             <ul>
               <li>
                 <h4 className="text-2xl font-bold font-roobert text-error">
-                  Bug Report
+                  Host URL
                 </h4>
-                <p>Right now we have an issue with a signUp form</p>
-                <p>you can login to test charts with</p>
+                <p>
+                  <a
+                    href="https://chart-app-silk.vercel.app/sign-up"
+                    target="_blank"
+                  >
+                    https://chart-app-silk.vercel.app/sign-up
+                  </a>
+                </p>
+                <p>Also, you can login to test charts with</p>
                 <p className="font-bold font-roobert">Login - aaa@gmail.com</p>
                 <p className="font-bold font-roobert">Pass - Qaz123</p>
               </li>

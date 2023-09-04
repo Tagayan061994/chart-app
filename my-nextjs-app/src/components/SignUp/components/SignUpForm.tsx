@@ -33,12 +33,6 @@ const SignUpForm = () => {
     dispatch(setSignInValues({ ...signInValues, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    signIn();
-  };
-
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -50,7 +44,7 @@ const SignUpForm = () => {
     }
   };
 
-  const signIn = async () => {
+  const signUp = async () => {
     try {
       dispatch(setLoading(true));
       handleSignUp();
@@ -64,6 +58,12 @@ const SignUpForm = () => {
       }
       dispatch(setLoading(false));
     }
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    signUp();
   };
 
   return (

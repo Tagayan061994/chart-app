@@ -1,4 +1,4 @@
-import SignUpForm from "@/components/SignIn/components/SignInForm";
+import SignUpForm from "@/components/SignUp/components/SignUpForm";
 import { Stack } from "@/components/primitives";
 
 export const SignUp = () => {
