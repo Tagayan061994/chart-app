@@ -50,8 +50,10 @@ const LoginForm = () => {
           })
         );
 
-        localStorage.setItem("userToken", user.accessToken);
+        const token = await user.getIdToken();
+        localStorage.setItem("userToken", token);
       }
+
       alert("User signed in successfully!");
       router.push("./");
     } catch (error) {
